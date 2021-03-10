@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import HomePage from './routes/HomePage/HomePage';
+import LoginPage from './routes/LoginPage/LoginPage';
+import DashBoard from './routes/DashBoard/DashBoard'
+import AddToPractice from './routes/AddToPractice/AddToPractice'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <main className="App">
+        <Route path="/" exact component={Header} />
+        <Route path="/login" exact component={Header} />
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/login" exact component={LoginPage} />
+          <Route path="/dashboard" exact component={DashBoard} />
+          <Route path="/addtopractice" exact component={AddToPractice} />
+        </Switch>
+        <Route path="/" component={Footer} />
+      </main>
+    );
+  }
 }
 
 export default App;

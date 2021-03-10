@@ -1,0 +1,52 @@
+/* ---------------Landing Page --------------- */
+
+.Landing-Page {
+  min-width: 100%;
+}
+
+.landingTextBox,
+.loginFormBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landingText {
+  max-width: 80%;
+}
+
+/* ------------ Form Styling ---------------  */
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LoginFormBox {
+  min-width: 80%;
+  min-height: 250px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 250px;
+  margin-top: 15px;
+}
+
+.InputBox {
+  padding: 8px;
+}
+
+input {
+  border: black 2px solid;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.btnBox {
+  padding: 18px;
+}

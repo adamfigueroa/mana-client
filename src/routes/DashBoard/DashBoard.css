@@ -1,0 +1,92 @@
+/* ---------- Dashboard Styling ------------ */
+
+.dashBoardBox {
+  border: solid black 3px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 700px) {
+  .dashBoardBox {
+    flex-direction: column;
+  }
+
+  .wake-up,
+  .todays-practice-title {
+    align-self: center;
+  }
+}
+
+/* -------- LEFT SIDE Dashboard Styling ------ */
+
+.calendar-left {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px black solid;
+  min-width: 25%;
+}
+
+/* ------- Hamburger Menu -------- */
+.burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  border-radius: 15%;
+  margin-bottom: 3px;
+}
+
+/* --------- Menu Bar ----------- */
+
+.dash-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  border-bottom: 2px solid black;
+}
+
+.mana-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mana-title {
+  font-size: 30px;
+  padding-right: 5px;
+}
+
+.mana-img {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+/* --------- Menu Bar ----------- */
+
+.dash-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  border-bottom: 2px solid black;
+}
+
+.mana-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mana-title {
+  font-size: 30px;
+  padding-right: 5px;
+}
+
+.mana-img {
+  max-width: 40px;
+  max-height: 40px;
+}
