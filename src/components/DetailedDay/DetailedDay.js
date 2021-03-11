@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './DetailedDay.css'
+import './DetailedDay.css';
 
 class DetailedDay extends Component {
   render() {
@@ -14,15 +14,15 @@ class DetailedDay extends Component {
           <p className="todays-practice-title">Todays Mana Practice:</p>
           <form className="check-list-goals">
             <div className="goal-box">
-              <label for="eventCheckbox">Meditate</label>
+              <label htmlFor="eventCheckbox">Meditate</label>
               <input type="checkbox" name="eventCheckbox" />
             </div>
             <div className="goal-box">
-              <label for="eventCheckbox">Breathwork</label>
+              <label htmlFor="eventCheckbox">Breathwork</label>
               <input type="checkbox" name="eventCheckbox" />
             </div>
             <div className="goal-box">
-              <label for="eventCheckbox">Journal</label>
+              <label htmlFor="eventCheckbox">Journal</label>
               <input type="checkbox" name="eventCheckbox" />
             </div>
             <button className="create-event">Add to your practice</button>

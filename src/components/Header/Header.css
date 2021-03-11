@@ -27,3 +27,13 @@
 .navBtn {
   padding: 0px 15px 0px 15px;
 }
+
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.mana-img {
+  max-width: 30px;
+  max-height: 30px;
+}

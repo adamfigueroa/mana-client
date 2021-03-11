@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import Logo from '../../images/mana-logo.png';
 
 class AddToPractice extends Component {
   render() {
@@ -7,21 +6,6 @@ class AddToPractice extends Component {
       <section className="add-practice-page">
         <div className="dashBoardBox">
           <div className="calendar-left">
-            <div className="dash-logo">
-              <div className="hamburger">
-                <div className="burger-line"></div>
-                <div className="burger-line"></div>
-                <div className="burger-line"></div>
-              </div>
-              <div className="mana-logo">
-                <h2 className="mana-title">Mana</h2>
-                <img
-                  className="mana-img"
-                  src={Logo}
-                  alt="Wizard hat and wand icon"
-                />
-              </div>
-            </div>
             <div className="dayBox">
               <p className="num-date">27</p>
               <p className="day">THURSDAY</p>
@@ -124,7 +108,9 @@ class AddToPractice extends Component {
                       />
                     </div>
                     <div className="day-checkbox">
-                      <label htmlFor="practice-wednesday-input">Wednesday</label>
+                      <label htmlFor="practice-wednesday-input">
+                        Wednesday
+                      </label>
                       <input
                         id="practice-wednesday-input"
                         name="practice-wednesday-input"

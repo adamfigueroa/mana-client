@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu.js';
+import logo from '../../images/mana-logo.png'
 import './Header.css';
 
 class Header extends Component {
   render() {
     return (
-      <header class="mainNavBar">
-        <h1 class="logo">
-          Mana<span class="logoTag">Become who you want to be</span>
-        </h1>
-        <ul class="navBar">
-          <li class="navBtn">Login</li>
-          <li class="navBtn">Register</li>
-        </ul>
+      <header className="mainNavBar">
+        <div className="logo-box">
+          <h1 className="logo">
+            Mana<span className="logoTag">Become who you want to be</span>
+          </h1>
+          <img src={logo} className="mana-img" alt="Wizard hat and wand icon"/>
+        </div>
+        <HamburgerMenu />
       </header>
     );
   }

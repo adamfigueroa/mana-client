@@ -4,7 +4,7 @@ import './HomePage.css';
 class HomePage extends Component {
   render() {
     return (
-      <section classNameName="Landing-Page">
+      <section className="Landing-Page">
         <div className="landingTextBox">
           <h3 className="landingTextTitle">Landing Page Title</h3>
           <p className="landingText">
@@ -33,11 +33,11 @@ class HomePage extends Component {
           <form className="registerForm">
             <h4>Sign-up below!</h4>
             <div className="InputBox">
-              <label for="registration-name-input">Enter your name</label>
+              <label htmlFor="registration-name-input">Enter your name</label>
               <input id="registration-name-input" name="name" required />
             </div>
             <div className="InputBox">
-              <label for="registration-username-input">Choose a username</label>
+              <label htmlFor="registration-username-input">Choose a username</label>
               <input
                 id="registration-username-input"
                 name="username"
@@ -45,7 +45,7 @@ class HomePage extends Component {
               />
             </div>
             <div className="InputBox">
-              <label for="registration-password-input">Choose a password</label>
+              <label htmlFor="registration-password-input">Choose a password</label>
               <input
                 id="registration-password-input"
                 name="password"
