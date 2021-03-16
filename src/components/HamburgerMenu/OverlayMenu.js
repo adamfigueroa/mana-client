@@ -22,7 +22,7 @@ const OverlayLink = styled(motion.li)`
 
   a {
     text-decoration: none;
-    color: #000;
+    color: #fff;
     font-size: 20px;
     transition: all 200ms ease-in-out;
   }

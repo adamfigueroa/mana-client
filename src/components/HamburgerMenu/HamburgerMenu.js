@@ -23,6 +23,7 @@ const OverlayContainer = styled(motion.div)`
   transform: translateX(4em)
   user-select: none;
   padding: 1em 2.5em;
+  background-color: #000;
 `;
 
 const menuVariants = {

@@ -4,6 +4,16 @@ import Calendar from '../../components/Calendar/Calendar';
 import './DashBoard.css';
 
 class DashBoard extends Component {
+  state = {
+    today: [],
+  }
+
+  componentDidMount() {
+    this.setState({
+      today: new Date()
+    })
+  }
+  
   render() {
     return (
       <section className="Dash-Board">
