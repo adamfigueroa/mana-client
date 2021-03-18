@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import './HomePage.css';
 
 class HomePage extends Component {
+  registerRedirect = () => {
+    this.props.history.push('/login');
+  };
+
   render() {
     return (
       <section className="Landing-Page">
@@ -29,36 +34,7 @@ class HomePage extends Component {
             Footloose? O-kay, who'd like a banger in the mouth?
           </p>
         </div>
-        <div className="registerFormBox">
-          <form className="registerForm">
-            <h4>Sign-up below!</h4>
-            <div className="InputBox">
-              <label htmlFor="registration-name-input">Enter your name</label>
-              <input id="registration-name-input" name="name" required />
-            </div>
-            <div className="InputBox">
-              <label htmlFor="registration-username-input">Choose a username</label>
-              <input
-                id="registration-username-input"
-                name="username"
-                required
-              />
-            </div>
-            <div className="InputBox">
-              <label htmlFor="registration-password-input">Choose a password</label>
-              <input
-                id="registration-password-input"
-                name="password"
-                type="password"
-                required
-              />
-            </div>
-            <div className="btnBox">
-              <button type="submit">Sign up</button>
-              <a href="#">Already have an account?</a>
-            </div>
-          </form>
-        </div>
+        <RegisterForm registerRedirect={this.registerRedirect} />
       </section>
     );
   }

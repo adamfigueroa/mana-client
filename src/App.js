@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
+import PublicRoute from './utilities/PublicRoute';
+import PrivateRoute from './utilities/PrivateRoute';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './routes/HomePage/HomePage';
@@ -15,9 +17,9 @@ class App extends Component {
         <Route path="/" component={Header} />
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/login" exact component={LoginPage} />
-          <Route path="/dashboard" exact component={DashBoard} />
-          <Route path="/addtopractice" exact component={AddToPractice} />
+          <PublicRoute path="/login" exact component={LoginPage} />
+          <PrivateRoute path="/dashboard" exact component={DashBoard} />
+          <PrivateRoute path="/addtopractice" exact component={AddToPractice} />
         </Switch>
         <Route path="/" component={Footer} />
       </main>
