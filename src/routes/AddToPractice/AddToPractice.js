@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import DetailedDay from '../../components/DetailedDay/DetailedDay';
 
 class AddToPractice extends Component {
   render() {
@@ -6,29 +7,7 @@ class AddToPractice extends Component {
       <section className="add-practice-page">
         <div className="dashBoardBox">
           <div className="calendar-left">
-            <div className="dayBox">
-              <p className="num-date">27</p>
-              <p className="day">THURSDAY</p>
-              <p>Wake up Time: 7:00 AM</p>
-            </div>
-            <div className="todays-practice">
-              <p>Todays Mana Practice:</p>
-              <form className="check-list-goals">
-                <div className="goal-box">
-                  <label htmlFor="eventCheckbox">Meditate</label>
-                  <input type="checkbox" name="eventCheckbox" />
-                </div>
-                <div className="goal-box">
-                  <label htmlFor="eventCheckbox">Breathwork</label>
-                  <input type="checkbox" name="eventCheckbox" />
-                </div>
-                <div className="goal-box">
-                  <label htmlFor="eventCheckbox">Journal</label>
-                  <input type="checkbox" name="eventCheckbox" />
-                </div>
-                <button className="create-event">Add to your practice</button>
-              </form>
-            </div>
+            <DetailedDay />
           </div>
           <div className="calendar-right">
             <div className="add-practice-box">

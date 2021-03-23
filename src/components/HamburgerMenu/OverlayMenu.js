@@ -71,7 +71,7 @@ function OverlayMenu({ isOpen }) {
           variants={{
             show: {
               ...variants.show,
-              transition: { delay: 0.4, duration: 0.2 },
+              transition: { delay: 0.35, duration: 0.2 },
             },
             hide: {
               ...variants.hide,
@@ -87,11 +87,27 @@ function OverlayMenu({ isOpen }) {
           variants={{
             show: {
               ...variants.show,
-              transition: { delay: 0.5, duration: 0.2 },
+              transition: { delay: 0.4, duration: 0.2 },
             },
             hide: {
               ...variants.hide,
               transition: { delay: 0.15, duration: 0.05 },
+            },
+          }}
+        >
+          <a href="/dashboard">Dashboard</a>
+        </OverlayLink>
+        <OverlayLink
+          initial={false}
+          animate={isOpen ? 'show' : 'hide'}
+          variants={{
+            show: {
+              ...variants.show,
+              transition: { delay: 0.45, duration: 0.2 },
+            },
+            hide: {
+              ...variants.hide,
+              transition: { delay: 0.2, duration: 0.05 },
             },
           }}
         >

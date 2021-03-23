@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
 import './Calendar.css';
 
-class Calendar extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <div className="year-box">
+function MyCalendar() {
+  const [value, onChange] = useState(new Date());
+
+  return (
+    <React.Fragment>
+      <Calendar onChange={onChange} value={value} />
+      {/* <div className="year-box">
           <div className="triangle-left"></div>
           <div className="year">2021</div>
           <div className="triangle-right"></div>
@@ -114,10 +117,9 @@ class Calendar extends Component {
               10
             </p>
           </div>
-        </div>
-      </React.Fragment>
-    );
-  }
+        </div> */}
+    </React.Fragment>
+  );
 }
 
-export default Calendar;
+export default MyCalendar;

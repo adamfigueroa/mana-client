@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DetailedDay from '../../components/DetailedDay/DetailedDay';
-import Calendar from '../../components/Calendar/Calendar';
+import MyCalendar from '../../components/Calendar/Calendar';
 import './DashBoard.css';
 
 class DashBoard extends Component {
@@ -22,7 +22,7 @@ class DashBoard extends Component {
             <DetailedDay />
           </div>
           <div className="calendar-right">
-            <Calendar />
+            <MyCalendar />
           </div>
         </div>
       </section>
