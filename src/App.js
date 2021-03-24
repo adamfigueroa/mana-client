@@ -14,12 +14,16 @@ import './App.css';
 class App extends Component {
   state = {
     practices: [],
-    hasError: false,
+    error: null,
     userLoggedIn: false,
   };
 
   setPractice = (practices) => {
     this.setState({ practices });
+  };
+
+  setError = (error) => {
+    this.setState({ error });
   };
 
   render() {

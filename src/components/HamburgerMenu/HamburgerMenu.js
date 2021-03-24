@@ -1,67 +1,55 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import MenuToggle from './MenuToggle';
-import OverlayMenu from './OverlayMenu';
+import React from 'react';
+import { slide as Menu } from 'react-burger-menu';
+import TokenService from '../../services/token-service';
+import './HamburgerMenu.css';
 
-const HamburgerContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding-right: 15px;
-`;
-
-const OverlayContainer = styled(motion.div)`
-  min-width: 300px;
-  width: 100%;
-  max-width: 45%;
-  height: 100%;
-  box-shadow: -2px 0 2px rgba(15, 15, 15, 0.3);
-  z-index: 90;
-  position: fixed;
-  top: 0;
-  right: 0;
-  transform: translateX(4em)
-  user-select: none;
-  padding: 1em 2.5em;
-  background-color: #000;
-`;
-
-const menuVariants = {
-  open: {
-    transform: 'translateX(3%)',
-  },
-  closed: {
-    transform: 'translateX(103%)',
-  },
+const toggleMenu = ({ isOpen }) => {
+  const menuWrap = document.querySelector('.bm-menu-wrap');
+  isOpen
+    ? menuWrap.setAttribute('aria-hidden', false)
+    : menuWrap.setAttribute('aria-hidden', true);
 };
 
-const menuTransition = {
-  type: 'spring',
-  duration: 1,
-  stiffness: 33,
-  delay: 0.1,
+const handleLogout = () => {
+  TokenService.clearAuthToken();
+  this.props.history.push('/');
 };
 
-function HamburgerMenu(props) {
-  const [isOpen, setOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setOpen(!isOpen);
-  };
-
+const renderLoginOption = () => {
   return (
-    <HamburgerContainer>
-      <MenuToggle toggle={handleMenuToggle} isOpen={isOpen} />
-      <OverlayContainer
-        initial={false}
-        animate={isOpen ? 'open' : 'closed'}
-        variants={menuVariants}
-        transition={menuTransition}
-      >
-        <OverlayMenu isOpen={isOpen}/>
-      </OverlayContainer>
-    </HamburgerContainer>
+    <a className="menu-item" href="/Login">
+      Login
+    </a>
   );
-}
+};
+
+const renderLogoutOptions = () => {
+  return (
+    <React.Fragment>
+      <button className="menu-item" onClick={handleLogout}>
+        Logout
+      </button>
+      <a className="menu-item" href="/dashboard">
+        Dashboard
+      </a>
+      <a className="menu-item" href="/addtopractice">
+        Add to your practice
+      </a>
+    </React.Fragment>
+  );
+};
+
+const HamburgerMenu = () => {
+  return (
+    <Menu left onStateChange={toggleMenu} width={'50%'}>
+      <a className="menu-item" href="/">
+        Home
+      </a>
+      {TokenService.hasAuthToken()
+        ? renderLogoutOptions()
+        : renderLoginOption()}
+    </Menu>
+  );
+};
 
 export default HamburgerMenu;

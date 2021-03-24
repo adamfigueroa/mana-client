@@ -7,7 +7,6 @@ class AddToPractice extends Component {
   static contextType = AppContext;
 
   state = {
-    error: null,
     sunday: false,
     monday: false,
     tuesday: false,
@@ -18,13 +17,9 @@ class AddToPractice extends Component {
   };
 
   createDayArray = () => {
-    let dayArr = [];
-    this.context.weekDays.map((day) => {
-      if (day.isChecked === true) {
-        dayArr.push(day.name);
-      }
-      return dayArr;
-    });
+    let tempState = { ...this.state };
+    let trueKeys = Object.keys(tempState).filter((key) => tempState[key]);
+    return trueKeys;
   };
 
   handlePracticeSubmit = (e) => {
@@ -32,31 +27,40 @@ class AddToPractice extends Component {
     const { practice_name_input, practice_days_input } = e.target;
 
     let dayArray = this.createDayArray();
-    console.log(dayArray);
+    // console.log(dayArray);
 
-    // this.setState({ error: null });
+    this.setState({ error: null });
 
-    // PracticeApiService.addPractice({
-    //   practice_name: practice_name_input.value,
-    //   days_to_track: practice_days_input.value,
-    //   days_left: practice_days_input.value,
-    //   day_of_week: `${dayObj}`,
-    // })
-    //   .then((practice) => {
-    //     practice_name_input.value = '';
-    //     practice_days_input.value = '';
-    //   })
-    //   .then(alert(`${practice_name_input.value} has been added`))
-    //   .catch((res) => {
-    //     this.setState({ error: res });
-    //   });
+    PracticeApiService.addPractice({
+      practice_name: practice_name_input.value,
+      days_to_track: practice_days_input.value,
+      days_left: practice_days_input.value,
+      day_of_week: dayArray,
+    })
+      .then((practice) => {
+        practice_name_input.value = '';
+        practice_days_input.value = '';
+        this.setState({
+          sunday: false,
+          monday: false,
+          tuesday: false,
+          wednesday: false,
+          thursday: false,
+          friday: false,
+          saturday: false,
+        });
+      })
+      .then(alert(`${practice_name_input.value} has been added`))
+      .catch((res) => {
+        this.setState({ error: res });
+      });
   };
 
-    toggleDay = (e) => {
-      this.setState({
-        [e.target.name]: e.target.value,
-      });
-    }
+  toggleDay = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   render() {
     return (
       <section className="add-practice-page">
@@ -109,9 +113,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
@@ -127,9 +131,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
@@ -145,9 +149,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
@@ -165,9 +169,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
@@ -183,9 +187,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
@@ -201,9 +205,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
@@ -219,9 +223,9 @@ class AddToPractice extends Component {
                           this.toggleDay({
                             target: {
                               name: e.target.value,
-                              value: e.target.checked
-                            }
-                          })
+                              value: e.target.checked,
+                            },
+                          });
                         }}
                       />
                     </div>
