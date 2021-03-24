@@ -21,6 +21,7 @@ class App extends Component {
   setPractice = (practices) => {
     this.setState({ practices });
   };
+
   render() {
     return (
       <main className="App">
