@@ -28,27 +28,77 @@ class DetailedDay extends Component {
       });
   }
 
+  // renderDayNumber() {
+  //   // debugger
+  //   let weekday = { weekday: 'long' };
+  //   let dayNum = { day: 'numeric' }
+  //   if (this.props.selectedDay.length === 0) {
+  //     return (
+  //       <div className="day-box">
+  //         <p className="num-date">{new Intl.DateTimeFormat('en-US', dayNum).format(
+  //             this.props.todaysDate
+  //           )}</p>
+  //         <p className="day">
+  //           {new Intl.DateTimeFormat('en-US', weekday).format(
+  //             this.props.todaysDate
+  //           )}
+  //         </p>
+  //       </div>
+  //     );
+  //   } else
+  //     return (
+  //       <div className="day-box">
+  //         <p className="num-date">{new Intl.DateTimeFormat('en-US', dayNum).format(
+  //             this.props.selectedDay
+  //           )}</p>
+  //         <p className="day">
+  //           {new Intl.DateTimeFormat('en-US', weekday).format(
+  //             this.props.selectedDay
+  //           )}
+  //         </p>
+  //       </div>
+  //     );
+  // }
+
   loadPractices = () => {
     const userPractices = this.context.practices.map((practice) => {
       return (
-        <Link to={`/practice/${practice.id}`}>
+        <Link key={practice.id + 3} to={`/practice/${practice.id}`}>
           <div className="practice-box" id={practice.id} key={practice.id}>
-            <label htmlFor="event-checkbox">{practice.practice_name}</label>
-            <input type="checkbox" name="event-checkbox" />
+            <label htmlFor="event-checkbox" key={practice.id + 1}>
+              {practice.practice_name}
+            </label>
+            <input
+              type="checkbox"
+              name="event-checkbox"
+              key={practice.id + 2}
+            />
           </div>
         </Link>
       );
     });
     if (userPractices.length === 0) {
-      return <div className="no-practice-box">Create a new practice below!</div>;
+      return (
+        <div className="no-practice-box">Create a new practice below!</div>
+      );
     } else return userPractices;
   };
   render() {
+    let weekday = { weekday: 'long' };
+    let dayNum = { day: 'numeric' };
     return (
       <React.Fragment>
         <div className="day-box">
-          <p className="num-date">27</p>
-          <p className="day">THURSDAY</p>
+          <p className="num-date">
+            {new Intl.DateTimeFormat('en-US', dayNum).format(
+              this.props.todaysDate
+            )}
+          </p>
+          <p className="day">
+            {new Intl.DateTimeFormat('en-US', weekday).format(
+              this.props.todaysDate
+            )}
+          </p>
         </div>
         <div className="todays-practice">
           <p className="todays-practice-title">Todays Mana Practice:</p>

@@ -37,7 +37,6 @@ const PracticeApiService = {
   },
 
   addPractice(practice) {
-    debugger
     return fetch(`${config.API_ENDPOINT}/practice`, {
       method: 'POST',
       headers: {

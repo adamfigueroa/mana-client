@@ -5,10 +5,11 @@ import AuthApiService from '../../services/auth-api-service';
 class RegisterForm extends Component {
   state = { error: null };
 
+  firstInput = React.createRef();
+
   handleRegister = (e) => {
     e.preventDefault();
     const { first_name, last_name, user_name, password } = e.target;
-    this.setState({ error: null });
 
     AuthApiService.postUser({
       first_name: first_name.value,
@@ -24,14 +25,16 @@ class RegisterForm extends Component {
         this.props.registerRedirect();
       })
       .catch((res) => {
-        this.setState({ error: res });
+        this.setState({ error: res.error });
       });
   };
 
   render() {
+    const { error } = this.state;
     return (
       <div className="registerFormBox">
         <form className="registerForm" onSubmit={this.handleRegister}>
+          <div role="alert">{error && <p>{error}</p>}</div>
           <h4>Sign-up below!</h4>
           <div className="InputBox">
             <label htmlFor="first_name">First name:</label>

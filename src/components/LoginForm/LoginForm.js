@@ -1,49 +1,61 @@
 import React, { Component } from 'react';
+import { Input, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
-import TokenService from '../../services/token-service';
+import UserContext from '../../context/UserContext';
+import Button from '../Button/Button';
 
 class LoginForm extends Component {
+  static defaultProps = {
+    onLoginSuccess: () => {},
+  };
+
+  static contextType = UserContext;
+
   state = { error: null };
 
   handleLogin = (e) => {
     e.preventDefault();
+    // debugger;
+    const { username, password } = e.target;
+
     this.setState({ error: null });
-    const user_name = e.target.username;
-    const password = e.target.password;
 
     AuthApiService.postLogin({
-      user_name: user_name.value,
+      user_name: username.value,
       password: password.value,
     })
       .then((res) => {
-        user_name.value = '';
+        username.value = '';
         password.value = '';
-        TokenService.saveAuthToken(res.authToken);
-        this.props.handleLoginSuccess();
+        this.context.processLogin(res.authToken);
+        this.props.onLoginSuccess();
       })
       .catch((res) => {
-        this.setState({ error: res.error.message });
+        this.setState({ error: res.error });
       });
+      
   };
 
   render() {
+    const { error } = this.state;
     return (
       <div className="loginFormBox">
         <form className="loginForm" onSubmit={this.handleLogin}>
+          <div role="alert">{error && <p>{error}</p>}</div>
           <div className="InputBox">
             <label htmlFor="login-username-input">Username</label>
-            <input id="login-username-input" name="username" required />
+            <Input id="login-username-input" name="username" required />
           </div>
           <div className="InputBox">
-            <label htmlFor="login-password-input">Password</label>
-            <input
+            <Label htmlFor="login-password-input">Password</Label>
+            <Input
               id="login-password-input"
               name="password"
               type="password"
               required
             />
           </div>
-          <button type="submit">Login</button>
+          <Button type="submit">Login</Button>
         </form>
         <div className="demoLogin">
           <h3>Give Mana a try!</h3>

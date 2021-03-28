@@ -11,7 +11,7 @@ class HomePage extends Component {
     return (
       <section className="Landing-Page">
         <div className="landingTextBox">
-          <h3 className="landingTextTitle">Landing Page Title</h3>
+          <h3 id="landingTextTitle" className="animate__animated animate__fadeInLeft">Landing Page Title</h3>
           <p className="landingText">
             Are you sure this isn't her sister? Mrs Veal: What a lovely thing to
             say. Michael: That's an awful thing to say. Oh, yeah, the guy in the

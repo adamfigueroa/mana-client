@@ -6,23 +6,39 @@ import './DashBoard.css';
 class DashBoard extends Component {
   state = {
     today: [],
-  }
+    selectedDay: [],
+    dayNumber: [],
+  };
 
   componentDidMount() {
     this.setState({
-      today: new Date()
-    })
+      today: new Date(),
+    });
   }
-  
+
+  handleCalendarCallback = (value) => {
+    this.setState({
+      selectedDay: value,
+      dayNumber: value.getDate(),
+    });
+  };
+
   render() {
     return (
       <section className="Dash-Board">
         <div className="dashBoardBox">
           <div className="calendar-left">
-            <DetailedDay />
+            <DetailedDay
+              todaysDate={this.state.today}
+              selectedDay={this.state.selectedDay}
+              dayNumber={this.dayNumber}
+            />
           </div>
           <div className="calendar-right">
-            <MyCalendar />
+            <MyCalendar
+              todaysDate={this.state.today}
+              handleCalendarCallback={this.handleCalendarCallback}
+            />
           </div>
         </div>
       </section>

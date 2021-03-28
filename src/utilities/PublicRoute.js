@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import TokenService from '../services/token-service';
+import UserContext from '../context/UserContext';
 
 function PublicRoute({ component, ...props }) {
   const Component = component;
@@ -8,13 +8,17 @@ function PublicRoute({ component, ...props }) {
   return (
     <Route
       {...props}
-      render={(componentProps) =>
-        TokenService.hasAuthToken() ? (
-          <Redirect to={'/'} />
-        ) : (
-          <Component {...componentProps} />
-        )
-      }
+      render={(componentProps) => (
+        <UserContext.Consumer>
+          {(userContext) =>
+            !!userContext.user.id ? (
+              <Redirect to={'/'} />
+            ) : (
+              <Component {...componentProps} />
+            )
+          }
+        </UserContext.Consumer>
+      )}
     />
   );
 }

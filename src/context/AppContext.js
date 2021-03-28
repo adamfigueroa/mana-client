@@ -4,7 +4,7 @@ const AppContext = React.createContext({
   practices: [],
   setPractice: () => {},
   error: null,
-  setError: () => {}
+  setError: () => {},
 });
 
 AppContext.displayName = 'AppContext';
