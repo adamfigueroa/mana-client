@@ -1,7 +1,7 @@
+import moment from 'moment';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
-import PracticeApiService from '../../services/practice-api-service';
 import './DetailedDay.css';
 
 class DetailedDay extends Component {
@@ -12,69 +12,40 @@ class DetailedDay extends Component {
     sort: '',
   };
 
-  componentDidMount() {
-    this.setState({ loading: true });
-    PracticeApiService.fetchUserPractice()
-      .then((practices) => {
-        this.context.setPractice(practices);
-        if (practices.length < 1) {
-          this.setState({ empty: true });
-        } else {
-          this.setState({ empty: false });
-        }
-      })
-      .catch((error) => {
-        this.setState({ error });
-      });
+  getTimeDifference(date_start, days_to_track) {
+    const endDate = moment(date_start).add(days_to_track, 'days');
+    const time = Date.parse(endDate._d) - Date.parse(new Date());
+    return Math.floor(time / (1000 * 60 * 60 * 24));
   }
-
-  // renderDayNumber() {
-  //   // debugger
-  //   let weekday = { weekday: 'long' };
-  //   let dayNum = { day: 'numeric' }
-  //   if (this.props.selectedDay.length === 0) {
-  //     return (
-  //       <div className="day-box">
-  //         <p className="num-date">{new Intl.DateTimeFormat('en-US', dayNum).format(
-  //             this.props.todaysDate
-  //           )}</p>
-  //         <p className="day">
-  //           {new Intl.DateTimeFormat('en-US', weekday).format(
-  //             this.props.todaysDate
-  //           )}
-  //         </p>
-  //       </div>
-  //     );
-  //   } else
-  //     return (
-  //       <div className="day-box">
-  //         <p className="num-date">{new Intl.DateTimeFormat('en-US', dayNum).format(
-  //             this.props.selectedDay
-  //           )}</p>
-  //         <p className="day">
-  //           {new Intl.DateTimeFormat('en-US', weekday).format(
-  //             this.props.selectedDay
-  //           )}
-  //         </p>
-  //       </div>
-  //     );
-  // }
-
   loadPractices = () => {
     const userPractices = this.context.practices.map((practice) => {
+      let daysLeft = this.getTimeDifference(practice.date_start, practice.days_to_track)
       return (
-        <Link key={practice.id + 3} to={`/practice/${practice.id}`}>
-          <div className="practice-box" id={practice.id} key={practice.id}>
-            <label htmlFor="event-checkbox" key={practice.id + 1}>
+        <div
+          className="practice-box"
+          id={practice.id}
+          key={parseInt(Date.now() * Math.random())}
+        >
+          <Link
+            key={parseInt(Date.now() * Math.random())}
+            to={`/practice/${practice.id}`}
+          >
+            <label
+              htmlFor="event-checkbox"
+              key={parseInt(Date.now() * Math.random())}
+            >
               {practice.practice_name}
             </label>
-            <input
-              type="checkbox"
-              name="event-checkbox"
-              key={practice.id + 2}
-            />
-          </div>
-        </Link>
+          </Link>
+          <p className="day-tracker" key={parseInt(Date.now() * Math.random())}>
+            {daysLeft} days left
+          </p>
+          <input
+            type="checkbox"
+            name="event-checkbox"
+            key={parseInt(Date.now() * Math.random())}
+          />
+        </div>
       );
     });
     if (userPractices.length === 0) {
