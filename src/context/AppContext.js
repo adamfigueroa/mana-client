@@ -19,6 +19,7 @@ export default AppContext;
 export class AppProvider extends Component {
   state = {
     practices: [],
+    practice_amount: 0,
     error: null,
     days_complete: [],
     days_incomplete: [],
@@ -44,7 +45,6 @@ export class AppProvider extends Component {
   setDaysIncomplete = (days_incomplete) => {
     this.setState({ days_incomplete });
   };
-
   componentDidMount() {
     PracticeApiService.fetchUserPractice()
       .then((practices) => {
@@ -52,7 +52,10 @@ export class AppProvider extends Component {
         if (practices.length < 1) {
           this.setState({ empty: true });
         } else {
-          this.setState({ empty: false });
+          this.setState({
+            empty: false,
+            practice_amount: practices.length,
+          });
         }
       })
       .catch((error) => {
@@ -64,6 +67,7 @@ export class AppProvider extends Component {
     const value = {
       practices: this.state.practices,
       setPractice: this.setPractice,
+      practice_amount: this.state.practice_amount,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,

@@ -15,7 +15,6 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    // debugger;
     const { username, password } = e.target;
 
     this.setState({ error: null });

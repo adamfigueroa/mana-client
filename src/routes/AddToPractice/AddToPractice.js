@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import AppContext from '../../context/AppContext';
 import PracticeApiService from '../../services/practice-api-service';
-import DetailedDay from '../../components/DetailedDay/DetailedDay';
 
 class AddToPractice extends Component {
   static contextType = AppContext;

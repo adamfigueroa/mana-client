@@ -4,6 +4,12 @@
   flex-direction: column;
   align-items: center;
   padding-top: 8px;
+  color: #fff;
+  background-color: navy;
+}
+
+.month {
+  margin: 0px;
 }
 
 .num-date {

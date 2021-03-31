@@ -10,6 +10,7 @@ class DetailedDay extends Component {
   state = {
     error: false,
     sort: '',
+    checkbox_count: 0,
   };
 
   getTimeDifference(date_start, days_to_track) {
@@ -17,9 +18,33 @@ class DetailedDay extends Component {
     const time = Date.parse(endDate._d) - Date.parse(new Date());
     return Math.floor(time / (1000 * 60 * 60 * 24));
   }
+
+  handleCheckBox = (e) => {
+    // debugger
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+
+    let currVal = this.state.checkbox_count;
+    if (this.state[e.target.name] === true) {
+      this.setState({
+        [e.target.name]: false,
+        checkbox_count: currVal - 1,
+      });
+    } else {
+      this.setState({
+        [e.target.name]: true,
+        checkbox_count: currVal + 1,
+      });
+    }
+  };
+
   loadPractices = () => {
     const userPractices = this.context.practices.map((practice) => {
-      let daysLeft = this.getTimeDifference(practice.date_start, practice.days_to_track)
+      let daysLeft = this.getTimeDifference(
+        practice.date_start,
+        practice.days_to_track
+      );
       return (
         <div
           className="practice-box"
@@ -42,7 +67,16 @@ class DetailedDay extends Component {
           </p>
           <input
             type="checkbox"
-            name="event-checkbox"
+            name={practice.id}
+            checked={this.state[practice.id]}
+            onChange={(e) => {
+              this.handleCheckBox({
+                target: {
+                  name: e.target.name,
+                  value: e.target.checked,
+                },
+              });
+            }}
             key={parseInt(Date.now() * Math.random())}
           />
         </div>
@@ -57,9 +91,15 @@ class DetailedDay extends Component {
   render() {
     let weekday = { weekday: 'long' };
     let dayNum = { day: 'numeric' };
+    let month = { month: 'long' };
     return (
       <React.Fragment>
         <div className="day-box">
+          <h4 className="month">
+            {new Intl.DateTimeFormat('en-US', month).format(
+              this.props.todaysDate
+            )}
+          </h4>
           <p className="num-date">
             {new Intl.DateTimeFormat('en-US', dayNum).format(
               this.props.todaysDate
