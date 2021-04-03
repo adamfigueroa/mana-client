@@ -23,6 +23,7 @@ export class AppProvider extends Component {
     error: null,
     days_complete: [],
     days_incomplete: [],
+    weekday: null
   };
 
   setError = (error) => {
@@ -45,7 +46,19 @@ export class AppProvider extends Component {
   setDaysIncomplete = (days_incomplete) => {
     this.setState({ days_incomplete });
   };
+
+  setWeekday = () => {
+    debugger
+    let wd = { weekday: 'long' };
+    let today = new Date()
+    let dayOfWeek = new Intl.DateTimeFormat('en-US', wd).format(today)
+    this.setState ({
+      weekday: dayOfWeek
+    })
+  }
   componentDidMount() {
+    this.setWeekday()
+
     PracticeApiService.fetchUserPractice()
       .then((practices) => {
         this.setPractice(practices);
@@ -60,7 +73,7 @@ export class AppProvider extends Component {
       })
       .catch((error) => {
         this.setState({ error });
-      });
+      }); 
   }
 
   render() {
@@ -75,6 +88,8 @@ export class AppProvider extends Component {
       setDaysComplete: this.setDaysComplete,
       days_incomplete: this.state.days_incomplete,
       setDaysIncomplete: this.setDaysIncomplete,
+      weekday: this.state.today,
+      setWeekday: this.setWeekday,
     };
     return (
       <AppContext.Provider value={value}>

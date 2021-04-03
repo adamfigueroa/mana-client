@@ -30,7 +30,7 @@ export class UserProvider extends Component {
       };
 
     this.state = state;
-    IdleService.setIdleCallback(this.logoutBecauseIdle);
+    IdleService.setIdleCallback(this.processLogout);
   }
 
   componentDidMount() {
@@ -75,13 +75,6 @@ export class UserProvider extends Component {
   };
 
   processLogout = () => {
-    TokenService.clearAuthToken();
-    TokenService.clearCallbackBeforeExpiry();
-    IdleService.unRegisterIdleResets();
-    this.setUser({});
-  };
-
-  logoutBecauseIdle = () => {
     TokenService.clearAuthToken();
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();

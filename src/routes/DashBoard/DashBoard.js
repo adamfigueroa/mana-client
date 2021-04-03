@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DetailedDay from '../../components/DetailedDay/DetailedDay';
-import MyCalendar from '../../components/Calendar/Calendar';
 import './DashBoard.css';
 
 class DashBoard extends Component {
@@ -15,14 +14,6 @@ class DashBoard extends Component {
       today: new Date(),
     });
   }
-
-  handleCalendarCallback = (value) => {
-    this.setState({
-      selectedDay: value,
-      dayNumber: value.getDate(),
-    });
-  };
-
   render() {
     return (
       <section className="Dash-Board">
@@ -35,10 +26,6 @@ class DashBoard extends Component {
             />
           </div>
           <div className="calendar-right">
-            <MyCalendar
-              todaysDate={this.state.today}
-              handleCalendarCallback={this.handleCalendarCallback}
-            />
           </div>
         </div>
       </section>
