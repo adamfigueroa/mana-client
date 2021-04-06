@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import PublicRoute from './utilities/PublicRoute';
 import PrivateRoute from './utilities/PrivateRoute';
+import { AppProvider } from './context/AppContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './routes/HomePage/HomePage';
@@ -9,7 +10,6 @@ import LoginPage from './routes/LoginPage/LoginPage';
 import DashBoard from './routes/DashBoard/DashBoard';
 import AddToPractice from './routes/AddToPractice/AddToPractice';
 import './App.css';
-import { AppProvider } from './context/AppContext';
 
 class App extends Component {
   state = { hasError: false };

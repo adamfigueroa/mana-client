@@ -32,23 +32,23 @@ class RegisterForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <div className="registerFormBox">
-        <form className="registerForm" onSubmit={this.handleRegister}>
+      <div className="register-form-box">
+        <form className="register-form" onSubmit={this.handleRegister}>
           <div role="alert">{error && <p>{error}</p>}</div>
-          <h4>Sign-up below!</h4>
-          <div className="InputBox">
+          <h4 className="register-title">Sign-up below!</h4>
+          <div className="input-box">
             <label htmlFor="first_name">First name:</label>
             <input id="registration-fname-input" name="first_name" required />
           </div>
-          <div className="InputBox">
+          <div className="input-box">
             <label htmlFor="last_name">Last name:</label>
             <input id="registration-lname-input" name="last_name" required />
           </div>
-          <div className="InputBox">
+          <div className="input-box">
             <label htmlFor="user_name">Email:</label>
             <input id="registration-username-input" name="user_name" required />
           </div>
-          <div className="InputBox">
+          <div className="input-box">
             <label htmlFor="password">Choose a password</label>
             <input
               id="registration-password-input"
@@ -57,8 +57,8 @@ class RegisterForm extends Component {
               required
             />
           </div>
-          <div className="btnBox">
-            <button type="submit" className="register-submit">
+          <div className="button-box">
+            <button type="submit" className="register-button">
               Sign up
             </button>
             <Link to="/login">

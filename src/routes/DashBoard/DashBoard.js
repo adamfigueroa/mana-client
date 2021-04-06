@@ -18,15 +18,11 @@ class DashBoard extends Component {
     return (
       <section className="Dash-Board">
         <div className="dashBoardBox">
-          <div className="calendar-left">
-            <DetailedDay
-              todaysDate={this.state.today}
-              selectedDay={this.state.selectedDay}
-              dayNumber={this.dayNumber}
-            />
-          </div>
-          <div className="calendar-right">
-          </div>
+          <DetailedDay
+            todaysDate={this.state.today}
+            selectedDay={this.state.selectedDay}
+            dayNumber={this.dayNumber}
+          />
         </div>
       </section>
     );

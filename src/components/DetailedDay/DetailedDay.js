@@ -11,8 +11,6 @@ class DetailedDay extends Component {
   state = {
     error: false,
     sort: '',
-    checkbox_count: 0,
-    day_complete: undefined,
     sessions: [],
   };
 
@@ -29,7 +27,7 @@ class DetailedDay extends Component {
   getDaysLeft(id, days_to_track) {
     let sessionArray = this.state.sessions;
     let result = sessionArray.filter((session) => session.practice_id === id);
-    return days_to_track - result.length
+    return days_to_track - result.length;
   }
 
   checkSessionComplete = () => {
@@ -47,13 +45,11 @@ class DetailedDay extends Component {
   };
 
   handleCheckBox = (e) => {
-    let currVal = this.state.checkbox_count;
     if (this.state[e.target.name] === undefined) {
       SessionApiService.addSession({
         date: this.props.todaysDate.toISOString(),
         practice_id: e.target.practice_id,
       });
-      console.log('first time clicked', e.target.name + 'Complete');
     }
     this.setState({
       [e.target.name]: true,
@@ -63,43 +59,48 @@ class DetailedDay extends Component {
   loadPractices = () => {
     const userPractices = this.context.practices.map((practice) => {
       let daysLeft = this.getDaysLeft(practice.id, practice.days_to_track);
-      return (
-        <div
-          className="practice-box"
-          id={practice.id}
-          key={parseInt(Date.now() * Math.random())}
-        >
-          <Link
+      if (daysLeft > 0) {
+        return (
+          <div
+            className="practice-box"
+            id={practice.id}
             key={parseInt(Date.now() * Math.random())}
-            to={`/practice/${practice.id}`}
           >
-            <label
-              htmlFor="event-checkbox"
+              <label
+                htmlFor="event-checkbox"
+                key={parseInt(Date.now() * Math.random())}
+              >
+                {practice.practice_name}
+              </label>
+            <p
+              className="day-tracker"
               key={parseInt(Date.now() * Math.random())}
             >
-              {practice.practice_name}
-            </label>
-          </Link>
-          <p className="day-tracker" key={parseInt(Date.now() * Math.random())}>
-            {daysLeft} days left
-          </p>
-          <input
-            type="checkbox"
-            name={practice.id}
-            checked={this.state[practice.id]}
-            onChange={(e) => {
-              this.handleCheckBox({
-                target: {
-                  name: e.target.name,
-                  value: e.target.checked,
-                  practice_id: practice.id,
-                },
-              });
-            }}
-            key={parseInt(Date.now() * Math.random())}
-          />
-        </div>
-      );
+              {daysLeft} days left
+            </p>
+            {this.state[practice.id] ? (
+              <p className="complete-box">Complete!</p>
+            ) : (
+              <input
+                type="checkbox"
+                className="checkbox-style"
+                name={practice.id}
+                checked={this.state[practice.id]}
+                onChange={(e) => {
+                  this.handleCheckBox({
+                    target: {
+                      name: e.target.name,
+                      value: e.target.checked,
+                      practice_id: practice.id,
+                    },
+                  });
+                }}
+                key={parseInt(Date.now() * Math.random())}
+              />
+            )}
+          </div>
+        );
+      }
     });
     if (userPractices.length === 0) {
       return (
@@ -131,7 +132,7 @@ class DetailedDay extends Component {
           <form className="check-list-goals">
             {this.loadPractices()}
             <Link to="/addtopractice">
-              <button className="create-event">Add to your practice</button>
+              <p className="create-event">Add to your practice</p>
             </Link>
           </form>
         </div>

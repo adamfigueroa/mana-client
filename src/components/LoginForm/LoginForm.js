@@ -38,14 +38,14 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <div className="loginFormBox">
-        <form className="loginForm" onSubmit={this.handleLogin}>
+      <div className="login-form-box">
+        <form className="login-form" onSubmit={this.handleLogin}>
           <div role="alert">{error && <p>{error}</p>}</div>
-          <div className="InputBox">
+          <div className="input-box">
             <label htmlFor="login-username-input">Username</label>
             <Input id="login-username-input" name="username" required />
           </div>
-          <div className="InputBox">
+          <div className="input-box">
             <Label htmlFor="login-password-input">Password</Label>
             <Input
               id="login-password-input"
@@ -54,9 +54,9 @@ class LoginForm extends Component {
               required
             />
           </div>
-          <Button type="submit">Login</Button>
+          <Button type="submit" className="login-button">Login</Button>
         </form>
-        <div className="demoLogin">
+        <div className="demo-login">
           <h3>Give Mana a try!</h3>
           <p>Username: test@testerson.com</p>
           <p>Password: Password!1</p>

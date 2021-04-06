@@ -5,7 +5,7 @@
   align-items: center;
   padding-top: 8px;
   color: #fff;
-  background-color: navy;
+  background-color: #292929;
 }
 
 .month {
@@ -19,7 +19,7 @@
 }
 
 .day {
-  margin: 0px;
+  margin: 0px 0px 8px 0px;
 }
 
 .todays-practice {
@@ -32,51 +32,44 @@
 .check-list-goals {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center
 }
 
 .practice-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
   padding: 8px;
+  min-width: 95%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  background-color: #292929;
 }
 
-.no-practice-box {
-  display:flex;
-  background-color:#fff;
-  padding:20px;
-  border-radius:30px;
-  min-width:40px;
-  max-width:220px;
-  min-height:40px;
-  margin:20px;
-  position:relative;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+.checkbox-style {
+  -webkit-appearance: none;
+  background-color: white;
+  padding: 8px;
+  border-radius: 2px;
 }
-.no-practice-box:before,
-.no-practice-box:after {
-  content:"";
-  background-color:#fff;
-  border-radius:50%;
-  display:block;
-  position:absolute;
-  z-index:-1;
+
+.complete-box {
+  background-color: #8547C2;
+  padding: 8px 2px 8px 2px;
+  margin: 8px 0px 8px 0px;
+  border-radius: 5px;
 }
-.no-practice-box:before {
-  width:44px;
-  height:44px;
-  top:-12px;
-  left:28px;
-  box-shadow:-50px 30px 0 -12px #fff;
+
+.create-event {
+  margin-top: 8px;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+  background-color: #8547C2;
+  font-size: 1.15em;
 }
-.no-practice-box:after {
-  bottom:-10px;
-  right:26px;
-  width:30px;
-  height:30px;
-  box-shadow:40px -34px 0 0 #fff,
-             -28px -6px 0 -2px #fff,
-             -24px 17px 0 -6px #fff,
-             -5px 25px 0 -10px #fff;
-  
+
+.create-event:hover {
+  background-color: black;
 }

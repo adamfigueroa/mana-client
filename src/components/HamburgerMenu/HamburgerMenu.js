@@ -32,17 +32,14 @@ class HamburgerMenu extends Component {
   renderLogoutOptions = () => {
     return (
       <React.Fragment>
-        <button className="menu-item" onClick={this.handleLogout}>
+        <button className="menu-button" onClick={this.handleLogout}>
           Logout
         </button>
-        <a className="menu-item" href="/">
-          Home
-        </a>
         <a className="menu-item" href="/dashboard">
-          Dashboard
+          Todays Practice
         </a>
         <a className="menu-item" href="/addtopractice">
-          Add to your practice
+          Add to your Practice
         </a>
       </React.Fragment>
     );
@@ -50,7 +47,7 @@ class HamburgerMenu extends Component {
 
   render() {
     return (
-      <Menu left onStateChange={this.toggleMenu} width={'50%'}>
+      <Menu left onStateChange={this.toggleMenu} width={'80%'}>
         {TokenService.hasAuthToken()
           ? this.renderLogoutOptions()
           : this.renderLoginOption()}

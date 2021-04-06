@@ -13,18 +13,28 @@ class AddToPractice extends Component {
   };
 
   state = {
-    sunday: false,
-    monday: false,
-    tuesday: false,
-    wednesday: false,
-    thursday: false,
-    friday: false,
-    saturday: false,
+    Sunday: false,
+    Monday: false,
+    Tuesday: false,
+    Wednesday: false,
+    Thursday: false,
+    Friday: false,
+    Saturday: false,
   };
 
   handleAddSuccess = () => {
     const { location, history } = this.props;
     const destination = (location.state || {}).from || '/dashboard';
+    this.context.setUpdating(true)
+        this.setState({
+          Sunday: false,
+          Monday: false,
+          Tuesday: false,
+          Wednesday: false,
+          Thursday: false,
+          Friday: false,
+          Saturday: false,
+        });
     history.push(destination);
   };
 
@@ -35,11 +45,11 @@ class AddToPractice extends Component {
   };
 
   handlePracticeSubmit = (e) => {
+    // debugger
     e.preventDefault();
     const { practice_name_input, practice_days_input } = e.target;
 
     let dayArray = this.createDayArray();
-    // console.log(dayArray);
 
     this.setState({ error: null });
 
@@ -49,20 +59,11 @@ class AddToPractice extends Component {
       day_of_week: dayArray,
     })
       .then((practice) => {
-        practice_name_input.value = '';
-        practice_days_input.value = '';
-        this.setState({
-          sunday: false,
-          monday: false,
-          tuesday: false,
-          wednesday: false,
-          thursday: false,
-          friday: false,
-          saturday: false,
-        });
-        this.handleAddSuccess();
+        console.log('test', this.context.practices)
+        this.context.setPractice([...this.context.practices, practice]);
       })
       .then(alert(`${practice_name_input.value} has been added`))
+      .then(this.handleAddSuccess())
       .catch((res) => {
         this.setState({ error: res });
       });
@@ -73,6 +74,7 @@ class AddToPractice extends Component {
       [e.target.name]: e.target.value,
     });
   };
+  
   render() {
     return (
       <section className="add-practice-page">
@@ -115,8 +117,8 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_sunday_input"
                       type="checkbox"
-                      value="sunday"
-                      checked={this.state.sunday}
+                      value="Sunday"
+                      checked={this.state.Sunday}
                       onChange={(e) => {
                         this.toggleDay({
                           target: {
@@ -133,8 +135,8 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_monday_input"
                       type="checkbox"
-                      value="monday"
-                      checked={this.state.monday}
+                      value="Monday"
+                      checked={this.state.Monday}
                       onChange={(e) => {
                         this.toggleDay({
                           target: {
@@ -151,8 +153,8 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_tuesday_input"
                       type="checkbox"
-                      value="tuesday"
-                      checked={this.state.tuesday}
+                      value="Tuesday"
+                      checked={this.state.Tuesday}
                       onChange={(e) => {
                         this.toggleDay({
                           target: {
@@ -169,8 +171,8 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_wednesday_input"
                       type="checkbox"
-                      value="wednesday"
-                      checked={this.state.wednesday}
+                      value="Wednesday"
+                      checked={this.state.Wednesday}
                       onChange={(e) => {
                         this.toggleDay({
                           target: {
@@ -187,7 +189,7 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_thursday_input"
                       type="checkbox"
-                      value="thursday"
+                      value="Thursday"
                       checked={this.state.thursday}
                       onChange={(e) => {
                         this.toggleDay({
@@ -205,8 +207,8 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_friday_input"
                       type="checkbox"
-                      value="friday"
-                      checked={this.state.friday}
+                      value="Friday"
+                      checked={this.state.Friday}
                       onChange={(e) => {
                         this.toggleDay({
                           target: {
@@ -223,8 +225,8 @@ class AddToPractice extends Component {
                       className="day-of-week-checkbox"
                       name="practice_saturday_input"
                       type="checkbox"
-                      value="saturday"
-                      checked={this.state.saturday}
+                      value="Saturday"
+                      checked={this.state.Saturday}
                       onChange={(e) => {
                         this.toggleDay({
                           target: {

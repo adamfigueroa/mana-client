@@ -1,13 +1,13 @@
 .bm-burger-button {
   position: relative;
-  width: 36px;
-  height: 30px;
-  left: 25px;
-  top: 25px;
+  width: 34px;
+  height: 28px;
+  left: 15px;
+  top: 30px;
 }
 
 .bm-burger-bars {
-  background: #000;
+  background: white;
 }
 
 .bm-menu-wrap {
@@ -28,11 +28,11 @@
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background-color: white;
 }
 
 .bm-menu {
-  background: #373a47;
+  background-color: #191919;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   overflow-y: hidden !important;
@@ -53,16 +53,22 @@
   color: #bdc3c7;
 }
 
-.menu-item {
+.menu-button, .menu-item {
   margin-top: 8px;
   padding: 15px 0px 15px 0px;
   text-decoration: none;
-  width: 100%;
+  color: white;
 }
 
-.menu-item:hover {
+.menu-button {
+  border: none;
+  background-color: #292929;
+  font-size: 1.15em;
+}
+
+.menu-item:hover, .menu-button:hover {
   background-color: #000;
-  color: aliceblue;
+  color: white;
 }
 
 

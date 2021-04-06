@@ -1,0 +1,52 @@
+.login-title {
+  background-color: #292929;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+}
+
+.login-form-box,
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-form-box {
+  min-height: 400px;
+}
+
+.login-form {
+  min-height: 150px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15px;
+  min-height: 70px;
+}
+
+.Input {
+  align-self: center;
+  min-width: 80%;
+}
+
+.login-button {
+  align-self: center;
+  font-size: 1.15em;
+  margin: 25px 0px 35px 0px;
+  padding: 20px 30px 20px 30px;
+  text-decoration: none;
+  color: white;
+  background-color: #292929;
+  border: none;
+}
+
+.login-button:hover {
+  background-color: black;
+}
+
+.demo-login {
+  background-color: #292929;
+}
