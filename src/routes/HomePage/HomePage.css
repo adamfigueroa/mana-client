@@ -1,18 +1,20 @@
 /* ---------------Landing Page --------------- */
 
-.Landing-Page {
+.landing-page {
   min-width: 100%;
 }
 
-.landingTextBox,
-.loginFormBox {
+.landing-text-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
+  min-height: 200px;
 }
 
-.landingText {
+.landing-text {
   max-width: 80%;
+  padding: 0px 10px 0px 10px;
 }
 
 /* ------------ Form Styling ---------------  */
@@ -37,7 +39,10 @@
   min-height: 150px;
 }
 
-#registration-fname-input, #registration-lname-input, #registration-username-input, #registration-password-input {
+#registration-fname-input,
+#registration-lname-input,
+#registration-username-input,
+#registration-password-input {
   align-self: center;
   min-width: 80%;
 }
@@ -58,5 +63,5 @@
 }
 
 .login-redirect {
-  color: #8547C2;
+  color: #8547c2;
 }

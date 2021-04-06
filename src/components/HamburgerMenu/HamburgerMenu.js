@@ -16,7 +16,7 @@ class HamburgerMenu extends Component {
   handleLogout = () => {
     this.context.processLogout();
   };
-  
+
   renderLoginOption = () => {
     return (
       <React.Fragment>

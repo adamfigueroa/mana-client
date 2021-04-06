@@ -31,7 +31,6 @@ class DetailedDay extends Component {
   }
 
   checkSessionComplete = () => {
-    // debugger;
     let seshArray = this.state.sessions;
     for (let i = 0; i < seshArray.length; i++) {
       let today = moment(new Date()).format('MM DD YY');
@@ -59,19 +58,19 @@ class DetailedDay extends Component {
   loadPractices = () => {
     const userPractices = this.context.practices.map((practice) => {
       let daysLeft = this.getDaysLeft(practice.id, practice.days_to_track);
-      if (daysLeft > 0) {
+      if (daysLeft > 0 && practice.day_of_week.includes(this.context.weekday)) {
         return (
           <div
             className="practice-box"
             id={practice.id}
             key={parseInt(Date.now() * Math.random())}
           >
-              <label
-                htmlFor="event-checkbox"
-                key={parseInt(Date.now() * Math.random())}
-              >
-                {practice.practice_name}
-              </label>
+            <label
+              htmlFor="event-checkbox"
+              key={parseInt(Date.now() * Math.random())}
+            >
+              {practice.practice_name}
+            </label>
             <p
               className="day-tracker"
               key={parseInt(Date.now() * Math.random())}
@@ -104,12 +103,13 @@ class DetailedDay extends Component {
     });
     if (userPractices.length === 0) {
       return (
-        <div className="no-practice-box">Create a new practice below!</div>
+        <div className="no-practice-box">
+          No scheduled practices today, create a new practice below!
+        </div>
       );
     } else return userPractices;
   };
   render() {
-    // let weekday = { weekday: 'long' };
     let dayNum = { day: 'numeric' };
     let month = { month: 'long' };
     return (
@@ -129,6 +129,11 @@ class DetailedDay extends Component {
         </div>
         <div className="todays-practice">
           <p className="todays-practice-title">Todays Mana Practice:</p>
+          <div className="column-label">
+            <p>Practice Name</p>
+            <p>Progress</p>
+            <p>Checkbox</p>
+          </div>
           <form className="check-list-goals">
             {this.loadPractices()}
             <Link to="/addtopractice">

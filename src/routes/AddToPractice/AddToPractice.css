@@ -1,0 +1,40 @@
+.add-practice-box,
+.choose-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.practice-form-title {
+  background-color: #292929;
+  padding: 15px;
+}
+
+#practice-name-input,
+#practice-days-input {
+  align-self: center;
+  min-width: 80%;
+}
+
+.choose-day {
+  margin-bottom: 15px;
+}
+
+.day-checkbox {
+  padding: 8px;
+}
+
+.submit-button {
+  align-self: center;
+  font-size: 1.15em;
+  margin: 25px 0px 35px 0px;
+  padding: 20px 30px 20px 30px;
+  text-decoration: none;
+  color: white;
+  background-color: #292929;
+  border: none;
+}
+
+.submit-button:hover {
+  background-color: black;
+}

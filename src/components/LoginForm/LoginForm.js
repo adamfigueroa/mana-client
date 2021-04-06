@@ -32,7 +32,6 @@ class LoginForm extends Component {
       .catch((res) => {
         this.setState({ error: res.error });
       });
-      
   };
 
   render() {
@@ -54,7 +53,9 @@ class LoginForm extends Component {
               required
             />
           </div>
-          <Button type="submit" className="login-button">Login</Button>
+          <Button type="submit" className="login-button">
+            Login
+          </Button>
         </form>
         <div className="demo-login">
           <h3>Give Mana a try!</h3>
