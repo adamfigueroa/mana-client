@@ -3,6 +3,10 @@
 - **Link to live app: https://mana-client.vercel.app/**
 - **Link to API Repo: https://github.com/adamfigueroa/mana-api**
 
+#### Give Mana a try!
+- Username: test@testerson.com
+- Password: Password!1
+
 
 # About Mana
 

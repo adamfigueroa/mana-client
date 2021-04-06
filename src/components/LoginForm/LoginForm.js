@@ -39,7 +39,7 @@ class LoginForm extends Component {
     return (
       <div className="login-form-box">
         <form className="login-form" onSubmit={this.handleLogin}>
-          <div role="alert">{error && <p>{error}</p>}</div>
+          <div role="alert">{error && <p className="alert-text">{error}</p>}</div>
           <div className="input-box">
             <label htmlFor="login-username-input">Username</label>
             <Input id="login-username-input" name="username" required />

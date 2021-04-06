@@ -65,3 +65,13 @@
 .login-redirect {
   color: #8547c2;
 }
+
+.alert-text {
+  background-color: red;
+  align-self: center;
+  font-size: 1.15em;
+  margin: 25px 0px 35px 0px;
+  padding: 20px 30px 20px 30px;
+  text-decoration: none;
+  color: white;
+}

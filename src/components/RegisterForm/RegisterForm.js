@@ -34,8 +34,8 @@ class RegisterForm extends Component {
     return (
       <div className="register-form-box">
         <form className="register-form" onSubmit={this.handleRegister}>
-          <div role="alert">{error && <p>{error}</p>}</div>
           <h4 className="register-title">Sign-up below!</h4>
+          <div role="alert">{error && <p className="alert-text">{error}</p>}</div>
           <div className="input-box">
             <label htmlFor="first_name">First name:</label>
             <input id="first_name" name="first_name" required />
