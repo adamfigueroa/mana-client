@@ -101,7 +101,7 @@ class DetailedDay extends Component {
         );
       }
     });
-    if (userPractices.length === 0) {
+    if (this.context.practices.length === 0) {
       return (
         <div className="no-practice-box">
           No scheduled practices today, create a new practice below!
