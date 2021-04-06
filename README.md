@@ -1,7 +1,7 @@
 # Mana | Be who you want to be
 
-**Link to live app: https://mana-client.vercel.app/**
-**Link to API Repo: https://github.com/adamfigueroa/mana-api**
+- **Link to live app: https://mana-client.vercel.app/**
+- **Link to API Repo: https://github.com/adamfigueroa/mana-api**
 
 
 # About Mana
