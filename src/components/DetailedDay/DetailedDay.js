@@ -65,12 +65,12 @@ class DetailedDay extends Component {
             id={practice.id}
             key={parseInt(Date.now() * Math.random())}
           >
-            <label
-              htmlFor="event-checkbox"
+            <p
+              className="practice-name"
               key={parseInt(Date.now() * Math.random())}
             >
               {practice.practice_name}
-            </label>
+            </p>
             <p
               className="day-tracker"
               key={parseInt(Date.now() * Math.random())}
@@ -99,7 +99,7 @@ class DetailedDay extends Component {
             )}
           </div>
         );
-      }
+      } else return ''
     });
     if (this.context.practices.length === 0) {
       return (

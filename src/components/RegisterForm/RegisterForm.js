@@ -38,20 +38,20 @@ class RegisterForm extends Component {
           <h4 className="register-title">Sign-up below!</h4>
           <div className="input-box">
             <label htmlFor="first_name">First name:</label>
-            <input id="registration-fname-input" name="first_name" required />
+            <input id="first_name" name="first_name" required />
           </div>
           <div className="input-box">
             <label htmlFor="last_name">Last name:</label>
-            <input id="registration-lname-input" name="last_name" required />
+            <input id="last_name" name="last_name" required />
           </div>
           <div className="input-box">
             <label htmlFor="user_name">Email:</label>
-            <input id="registration-username-input" name="user_name" required />
+            <input id="user_name" name="user_name" required />
           </div>
           <div className="input-box">
             <label htmlFor="password">Choose a password</label>
             <input
-              id="registration-password-input"
+              id="password"
               name="password"
               type="password"
               required

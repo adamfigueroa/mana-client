@@ -47,7 +47,12 @@ class HamburgerMenu extends Component {
 
   render() {
     return (
-      <Menu left onStateChange={this.toggleMenu} width={'80%'}>
+      <Menu
+        left
+        onStateChange={this.toggleMenu}
+        width={'80%'}
+        id={'burger-menu'}
+      >
         {TokenService.hasAuthToken()
           ? this.renderLogoutOptions()
           : this.renderLoginOption()}

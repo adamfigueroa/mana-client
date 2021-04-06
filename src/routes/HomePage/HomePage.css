@@ -39,10 +39,10 @@
   min-height: 150px;
 }
 
-#registration-fname-input,
-#registration-lname-input,
-#registration-username-input,
-#registration-password-input {
+#first_name,
+#last_name,
+#user_name,
+#password {
   align-self: center;
   min-width: 80%;
 }
