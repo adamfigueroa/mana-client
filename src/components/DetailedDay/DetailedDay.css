@@ -31,26 +31,37 @@
 
 .column-label {
   display: flex;
-  justify-content: space-between;
-  margin: 0px 20px 0px 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 8px;
+  width: 300px;
 }
 
 .check-list-goals {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .practice-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   padding: 8px;
-  min-width: 95%;
+  height: 170px;
+  width: 250px;
   border-radius: 15px;
   margin-bottom: 10px;
   background-color: #292929;
+}
+
+@media only screen and (min-width: 350px) {
+  .practice-box {
+    width: 80%;
+  }
 }
 
 .no-practice-box {

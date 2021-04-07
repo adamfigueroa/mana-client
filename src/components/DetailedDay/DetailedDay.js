@@ -99,6 +99,9 @@ class DetailedDay extends Component {
             )}
           </div>
         );
+      } 
+      if (daysLeft <= 0) {
+        alert(`${practice.practice_name} has been completed!`)
       } else return ''
     });
     if (this.context.practices.length === 0) {
@@ -128,12 +131,7 @@ class DetailedDay extends Component {
           <p className="day">{this.context.weekday}</p>
         </div>
         <div className="todays-practice">
-          <p className="todays-practice-title">Todays Mana Practice:</p>
-          <div className="column-label">
-            <p>Practice Name</p>
-            <p>Progress</p>
-            <p>Checkbox</p>
-          </div>
+          <p className="todays-practice-title">select the checkbox once you complete a practice</p>
           <form className="check-list-goals">
             {this.loadPractices()}
             <Link to="/addtopractice">

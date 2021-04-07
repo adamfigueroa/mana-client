@@ -21,6 +21,12 @@ class HomePage extends Component {
             you want to track, what days of the week you want to do your
             practice on, and we will take care of the rest!
           </p>
+          <p className="landing-text">
+          A daily practice is something that is cultivated over your lifetime so don't
+          let missed days stop you from completing a goal! This app tracks only the 
+          successful days for each individual practice. This ensures Once you've finished a 
+          practice for the day, select the check box and it will be marked complete.
+          </p>
         </div>
         <RegisterForm registerRedirect={this.registerRedirect} />
       </section>
