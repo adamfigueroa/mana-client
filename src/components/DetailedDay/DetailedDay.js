@@ -101,7 +101,7 @@ class DetailedDay extends Component {
         );
       } 
       if (daysLeft <= 0) {
-        alert(`${practice.practice_name} has been completed!`)
+        return alert(`${practice.practice_name} has been completed!`)
       } else return ''
     });
     if (this.context.practices.length === 0) {
